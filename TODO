@@ -1,0 +1,9 @@
+#TODO: add pytest, requests, Flask, logging
+#TODO: create tests, logs and app folders
+#TODO: add logging with config
+#TODO: add env args parsing
+#TODO: use cvs with meteo station codes as a mapping data point
+#TODO: pulling down a zip file from the webpage
+#TODO: unzip the downloaded file
+#TODO: read and transform the data
+#TODO: triggerable mails with crash reports
