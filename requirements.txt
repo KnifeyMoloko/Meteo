@@ -1,5 +1,6 @@
 allure-pytest==2.8.6
 allure-python-commons==2.8.6
+assertpy==1.0
 attrs==19.3.0
 Click==7.0
 Flask==1.1.1
