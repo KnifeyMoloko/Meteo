@@ -16,7 +16,8 @@ logger = logging.getLogger(__name__)
 
 def main():
     logger.debug("Running")
-    return DownloadLookupTableApp
+    DownloadLookupTableApp.run()
+    return 0
 
 
 if __name__ == "__main__":

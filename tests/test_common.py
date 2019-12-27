@@ -37,10 +37,22 @@ class TestFileDownload(object):
 class TestDataParsers(object):
     import pandas as pd
     station_url = "https://dane.imgw.pl/data/dane_pomiarowo_obserwacyjne/dane_meteorologiczne/wykaz_stacji.csv"
+    station_columns = ["kod_stacji", "nazwa_stacji", "5_znakowy_kod_stacji"]
+    station_index = "5_znakowy_kod_stacji"
 
     @pytest.fixture()
     def fetch_data(self):
         return get_file_at_url(self.station_url).content
 
     def test_parse_lookup_table_to_pandas_data_frame_returns_data_frame(self, fetch_data):
-        assert_that(parse_csv_to_data_frame(fetch_data)).is_type_of(self.pd.DataFrame)
+        assert_that(parse_csv_to_data_frame(
+            fetch_data,
+            columns=self.station_columns,
+            index=self.station_index)).is_type_of(self.pd.DataFrame)
+
+    def test_parse_lookup_table_to_pandas_data_frame_has_column_names_equal_to_station_index(self, fetch_data):
+        dframe = parse_csv_to_data_frame(
+            fetch_data,
+            columns=self.station_columns,
+            index=self.station_index)
+        assert_that(list(dframe)).is_equal_to(self.station_columns)
